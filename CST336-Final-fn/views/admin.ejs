@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            /* max-height: 400px;
+            overflow-y: scroll;
+            display: block; */
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <a href="/">Go back</a>
+    <h1>User Table</h1>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let i of users) { %>
+                    <tr>
+                        <td><%= i.user_id %></td>
+                        <td><%= i.username %></td>
+                        <td><%= i.password %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <h1>Recipe Table</h1>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Recipe ID</th>
+                    <th>Recipe Name</th>
+                    <th>Instructions</th>
+                    <th>Image URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let i of recipes) { %>
+                    <tr>
+                        <td><%= i.recipe_id %></td>
+                        <td><%= i.name %></td>
+                        <td><%= i.instructions %></td>
+                        <td><%= i.thumbnail %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+    <h1>Meal Plan Table</h1>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Meal Plan ID</th>
+                    <th>User ID</th>
+                    <th>Recipe ID</th>
+                    <th>Date</th>
+                    <th>Meal Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let i of meal_plans) { %>
+                    <tr>
+                        <td><%= i.plan_id %></td>
+                        <td><%= i.user_id %></td>
+                        <td><%= i.recipe_id %></td>
+                        <td><%= i.date %></td>
+                        <td><%= i.meal_type %></td>
+                        <td><form action="/deletemealplan" method="POST" style="display:inline;">
+                            <input type="hidden" name="plan_id" value="<%= i.plan_id %>">
+                            <button type="submit">Delete</button>
+                        </form></td>
+                        
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+    <h1>Favorite Recipes Table</h1>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Favorite_Recipe_ID</th>
+                    <th>User_ID</th>
+                    <th>Recipe_ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let i of fav) { %>
+                    <tr>
+                        <td><%= i.favorite_recipe_id %></td>
+                        <td><%= i.user_id %></td>
+                        <td><%= i.recipe_id %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+</body>
+</html>

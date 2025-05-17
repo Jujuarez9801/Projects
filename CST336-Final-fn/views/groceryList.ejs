@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head.ejs") %>
+    <link href="css/groceryList.css" rel="stylesheet">
+    <title>Grocery List</title>
+</head>
+<body>
+    <%- include('partials/nav', { isAdmin: isAdmin, username: username}) %>
+
+    <h1 id="grocery">Grocery List</h1>
+
+    <div id="gList">
+        
+                <% for(let row of uniqueIngredients){%>
+                    <label class="g1">
+                        <div class="itemRadio">
+                            <input name ="groceryItem" type="checkbox">
+                            <span class="item"><%= row %></span>
+                        </div>
+                        <span class="qty">Qty:1 </span>
+                    </label> <br>
+                <%}%>
+            
+
+        <button id="add">
+            +
+        </button>
+        
+    </div>
+
+
+</body>
+</html>
